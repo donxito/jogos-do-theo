@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { type Animal } from "@/lib/animals";
-import { playTone } from "@/components/playTone";
+import { playTone } from "./playTone";
 
 function AnimalCard({
   animal,
