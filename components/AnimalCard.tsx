@@ -50,16 +50,15 @@ function AnimalCard({
         justifyContent: "center",
         cursor: "pointer",
         position: "relative",
-        overflow: "visible",
+        overflow: "hidden",
         transform: tapped ? "scale(1.12)" : "scale(1)",
         transition: "transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
         boxShadow: tapped
           ? `0 8px 30px ${animal.bg}aa, 0 0 0 4px ${animal.color}30`
           : `0 4px 15px ${animal.bg}66`,
-        aspectRatio: "1",
         userSelect: "none",
         WebkitTapHighlightColor: "transparent",
-        padding: "12px",
+        padding: "20px 12px",
       }}
     >
       {/* Decorative circles */}
@@ -113,7 +112,6 @@ function AnimalCard({
         style={{
           fontSize: "clamp(48px, 12vw, 72px)",
           lineHeight: 1,
-          filter: tapped ? "none" : "none",
           transform: tapped ? "rotate(-8deg)" : "rotate(0deg)",
           transition: "transform 0.3s ease",
         }}

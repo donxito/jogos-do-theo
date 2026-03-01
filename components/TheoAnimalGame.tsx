@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { animals, type Animal } from "@/lib/animals";
-import AnimalCard from "./AnimalCard";
-import Stars from "./Stars";
+import AnimalCard from "./animalCard";
+import Stars from "./stars";
 
 export default function TheoAnimalGame() {
   const [lang, setLang] = useState("pt");
