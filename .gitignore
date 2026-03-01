@@ -48,5 +48,5 @@ next-env.d.ts
 # claude
 .claude
 
-# test
-/test
+# docs
+.docs
