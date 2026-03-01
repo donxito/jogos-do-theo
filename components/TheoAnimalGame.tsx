@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { animals, type Animal } from "@/lib/animals";
-import AnimalCard from "./animalCard";
-import Stars from "./stars";
+import AnimalCard from "@/components/animalCard";
+import Stars from "@/components/stars";
 
 export default function TheoAnimalGame() {
   const [lang, setLang] = useState("pt");

@@ -1,6 +1,8 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 import { type Animal } from "@/lib/animals";
-import { playTone } from "./playTone";
+import { playTone } from "@/components/playTone";
 
 function AnimalCard({
   animal,
