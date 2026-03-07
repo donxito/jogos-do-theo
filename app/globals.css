@@ -83,6 +83,134 @@ END OF CSS RESET
 START OF CUSTOM STYLES
 */
 
+/* ═══════════════════════════════════════
+   SHARED ANIMATIONS — Game Hub
+   ═══════════════════════════════════════ */
+
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes starPop {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes lightOn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes homeFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes cardSlideIn {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ═══════════════════════════════════════
+   VEHICLE GAME ANIMATIONS
+   ═══════════════════════════════════════ */
+
+@keyframes motionLine {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-16px); }
+}
+
+@keyframes wheelSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  25% { opacity: 1; }
+  100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes driveAcross {
+  0% { transform: translateX(-60px); opacity: 0; }
+  15% { opacity: 0.15; }
+  85% { opacity: 0.15; }
+  100% { transform: translateX(calc(100vw + 60px)); opacity: 0; }
+}
+
+@keyframes roadScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 40px 0; }
+}
+
+/* Vehicle tap animations */
+.vehicle-anim-car { animation: vehicleShake 0.5s ease !important; }
+.vehicle-anim-truck { animation: vehicleRumble 0.6s ease !important; }
+.vehicle-anim-train { animation: vehicleChug 0.6s ease !important; }
+.vehicle-anim-plane { animation: vehicleLift 0.6s ease !important; }
+.vehicle-anim-boat { animation: vehicleRock 0.6s ease !important; }
+.vehicle-anim-firetruck { animation: vehicleFlash 0.5s ease !important; }
+.vehicle-anim-helicopter { animation: vehicleLift 0.5s ease !important; }
+.vehicle-anim-motorcycle { animation: vehicleShake 0.4s ease !important; }
+.vehicle-anim-bicycle { animation: vehicleWobble 0.5s ease !important; }
+
+@keyframes vehicleShake {
+  0%, 100% { transform: scale(1.08) translateX(0); }
+  20% { transform: scale(1.08) translateX(4px); }
+  40% { transform: scale(1.08) translateX(-3px); }
+  60% { transform: scale(1.08) translateX(2px); }
+  80% { transform: scale(1.08) translateX(-1px); }
+}
+
+@keyframes vehicleRumble {
+  0%, 100% { transform: scale(1.08) translateY(0); }
+  15% { transform: scale(1.08) translateY(-2px); }
+  30% { transform: scale(1.08) translateY(1px); }
+  45% { transform: scale(1.08) translateY(-3px); }
+  60% { transform: scale(1.08) translateY(1px); }
+  75% { transform: scale(1.08) translateY(-1px); }
+}
+
+@keyframes vehicleChug {
+  0%, 100% { transform: scale(1.08) translateX(0); }
+  25% { transform: scale(1.08) translateX(5px); }
+  50% { transform: scale(1.08) translateX(0px); }
+  75% { transform: scale(1.08) translateX(5px); }
+}
+
+@keyframes vehicleLift {
+  0% { transform: scale(1.08) translateY(0); }
+  50% { transform: scale(1.10) translateY(-8px); }
+  100% { transform: scale(1.08) translateY(0); }
+}
+
+@keyframes vehicleRock {
+  0%, 100% { transform: scale(1.08) rotate(0deg); }
+  25% { transform: scale(1.08) rotate(3deg); }
+  75% { transform: scale(1.08) rotate(-3deg); }
+}
+
+@keyframes vehicleFlash {
+  0%, 100% { transform: scale(1.08); filter: brightness(1); }
+  25% { transform: scale(1.08); filter: brightness(1.3); }
+  50% { transform: scale(1.08); filter: brightness(1); }
+  75% { transform: scale(1.08); filter: brightness(1.3); }
+}
+
+@keyframes vehicleWobble {
+  0%, 100% { transform: scale(1.08) rotate(0deg); }
+  20% { transform: scale(1.08) rotate(-4deg); }
+  40% { transform: scale(1.08) rotate(3deg); }
+  60% { transform: scale(1.08) rotate(-2deg); }
+  80% { transform: scale(1.08) rotate(1deg); }
+}
+
 /*
 END OF CUSTOM STYLES
 */

@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Nunito, Baloo_2 } from "next/font/google";
+import { LangProvider } from "@/lib/LangContext";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const nunito = Nunito({
+  variable: "--font-nunito",
   subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const baloo2 = Baloo_2({
+  variable: "--font-baloo2",
   subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Animais do Theo",
-  description: "Animais do Theo",
+  title: "Jogos do Theo",
+  description: "Jogos do Theo - Game hub feito com amor pelo Papi",
 };
 
 export default function RootLayout({
@@ -23,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt" suppressHydrationWarning>
       <head>
         <meta
           name="format-detection"
@@ -31,10 +34,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${nunito.variable} ${baloo2.variable}`}
         suppressHydrationWarning
       >
-        {children}
+        <LangProvider>{children}</LangProvider>
       </body>
     </html>
   );

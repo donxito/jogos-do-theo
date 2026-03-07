@@ -1,7 +1,7 @@
 "use client";
 
-import TheoAnimalGame from "@/components/TheoAnimalGame";
+import { HomeScreen } from "@/components/HomeScreen";
 
 export default function Home() {
-  return <TheoAnimalGame />;
+  return <HomeScreen />;
 }
