@@ -22,7 +22,7 @@ export const animals: Animal[] = [
     id: "dog",
     emoji: "🐕",
     sound: "Au au!",
-    pt: "Cachorro",
+    pt: "Cão",
     da: "Hund",
     bg: "#FFD3B6",
     color: "#8B4513",

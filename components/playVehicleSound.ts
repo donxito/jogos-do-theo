@@ -1,4 +1,4 @@
-export function playVehicleSound(vehicleId: string) {
+function playSynthFallback(vehicleId: string) {
   try {
     const ctx = new AudioContext();
     const now = ctx.currentTime;
@@ -101,7 +101,19 @@ export function playVehicleSound(vehicleId: string) {
 
     const play = sounds[vehicleId];
     if (play) play();
-  } catch {
+  } catch (_e) {
     // Audio not supported
+  }
+}
+
+export function playVehicleSound(vehicleId: string) {
+  try {
+    const audio = new Audio(`/sounds/${vehicleId}.mp3`);
+    audio.volume = 0.7;
+    audio.play().catch(() => {
+      playSynthFallback(vehicleId);
+    });
+  } catch (_e) {
+    playSynthFallback(vehicleId);
   }
 }

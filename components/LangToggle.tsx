@@ -24,9 +24,9 @@ export function LangToggle() {
         transition: "all 0.2s ease",
       }}
     >
-      {lang === "pt" ? "🇧🇷" : "🇩🇰"}
+      {lang === "pt" ? "🇵🇹" : "🇩🇰"}
       <span style={{ fontSize: "12px", opacity: 0.4 }}>→</span>
-      {lang === "pt" ? "🇩🇰" : "🇧🇷"}
+      {lang === "pt" ? "🇩🇰" : "🇵🇹"}
     </button>
   );
 }
