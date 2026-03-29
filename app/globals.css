@@ -211,6 +211,41 @@ START OF CUSTOM STYLES
   80% { transform: scale(1.08) rotate(1deg); }
 }
 
+/* ═══════════════════════════════════════
+   BUBBLE GAME ANIMATIONS
+   ═══════════════════════════════════════ */
+
+@keyframes bubbleFloatUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-120vh); }
+}
+
+@keyframes bubbleWobble {
+  0%, 100% { margin-left: 0; }
+  25% { margin-left: 15px; }
+  75% { margin-left: -15px; }
+}
+
+@keyframes bubbleUnlockSlide {
+  0% { transform: translateX(-50%) translateY(100px); opacity: 0; }
+  15% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  85% { transform: translateX(-50%) translateY(0); opacity: 1; }
+  100% { transform: translateX(-50%) translateY(-50px); opacity: 0; }
+}
+
+@keyframes bubbleShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Bubble pop particles */
+@keyframes bubbleParticle0 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(-30px,-40px) scale(0); opacity:0; } }
+@keyframes bubbleParticle1 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(35px,-30px) scale(0); opacity:0; } }
+@keyframes bubbleParticle2 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(-25px,35px) scale(0); opacity:0; } }
+@keyframes bubbleParticle3 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(30px,30px) scale(0); opacity:0; } }
+@keyframes bubbleParticle4 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(-40px,10px) scale(0); opacity:0; } }
+@keyframes bubbleParticle5 { 0% { transform: translate(0,0) scale(1); opacity:1; } 100% { transform: translate(40px,-15px) scale(0); opacity:0; } }
+
 /*
 END OF CUSTOM STYLES
 */

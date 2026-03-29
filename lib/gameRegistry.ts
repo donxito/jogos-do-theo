@@ -27,4 +27,13 @@ export const GAMES: GameEntry[] = [
     bg: "linear-gradient(135deg, #D6EAF8, #FFE0E0)",
     color: "#2471A3",
   },
+  {
+    id: "bubbles",
+    route: "/bubbles",
+    emoji: "🫧",
+    pt: { name: "Bolhas", desc: "Estoura as bolhas!" },
+    da: { name: "Bobler", desc: "Pop boblerne!" },
+    bg: "linear-gradient(135deg, #FFF6A5, #C7CEEA)",
+    color: "#8B7500",
+  },
 ];
