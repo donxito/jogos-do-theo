@@ -33,34 +33,34 @@ export function AnimalGame() {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         background:
           "linear-gradient(180deg, #FFF9F0 0%, #FFF0E6 50%, #F0F4FF 100%)",
         fontFamily: "'Nunito', sans-serif",
-        padding: "16px",
-        paddingTop: "60px",
-        paddingBottom: "100px",
+        padding: "clamp(10px, 2.5vw, 16px)",
+        paddingTop: "clamp(48px, 8vw, 60px)",
+        paddingBottom: "clamp(24px, 6vw, 60px)",
       }}
     >
       <BackButton />
 
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+      <div style={{ textAlign: "center", marginBottom: "clamp(10px, 3vw, 20px)" }}>
         <h1
           style={{
-            fontSize: "clamp(24px, 6vw, 36px)",
+            fontSize: "clamp(20px, 5.5vw, 36px)",
             fontWeight: "900",
             color: "#4A3728",
-            margin: "0 0 4px 0",
+            margin: "0 0 2px 0",
           }}
         >
           {lang === "pt" ? "🌟 Animais do Theo 🌟" : "🌟 Theos Dyr 🌟"}
         </h1>
         <p
           style={{
-            fontSize: "14px",
+            fontSize: "clamp(12px, 3.2vw, 14px)",
             color: "#8B7355",
-            margin: "0 0 12px 0",
+            margin: "0 0 clamp(6px, 2vw, 12px) 0",
             fontWeight: "600",
           }}
         >
@@ -70,7 +70,7 @@ export function AnimalGame() {
       </div>
 
       {/* Stars progress */}
-      <div style={{ marginBottom: "16px" }}>
+      <div style={{ marginBottom: "clamp(8px, 2.5vw, 16px)" }}>
         <Stars count={tappedAnimals.size} />
       </div>
 
@@ -79,7 +79,7 @@ export function AnimalGame() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "12px",
+          gap: "clamp(8px, 2.5vw, 12px)",
           maxWidth: "420px",
           margin: "0 auto",
         }}
@@ -110,17 +110,18 @@ export function AnimalGame() {
             justifyContent: "center",
             zIndex: 100,
             animation: "popIn 0.4s ease",
+            padding: "clamp(16px, 4vw, 32px)",
           }}
         >
-          <div style={{ fontSize: "80px", animation: "bounce 0.8s ease infinite" }}>
+          <div style={{ fontSize: "clamp(48px, 12vw, 80px)", animation: "bounce 0.8s ease infinite" }}>
             🎉
           </div>
           <h2
             style={{
-              fontSize: "clamp(28px, 7vw, 42px)",
+              fontSize: "clamp(24px, 6vw, 42px)",
               fontWeight: "900",
               color: "#4A3728",
-              margin: "16px 0 8px",
+              margin: "clamp(8px, 2vw, 16px) 0 clamp(4px, 1vw, 8px)",
               textAlign: "center",
             }}
           >
@@ -128,10 +129,10 @@ export function AnimalGame() {
           </h2>
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "clamp(14px, 4vw, 18px)",
               color: "#8B7355",
               fontWeight: "700",
-              margin: "0 0 8px",
+              margin: "0 0 clamp(4px, 1vw, 8px)",
             }}
           >
             {lang === "pt"
@@ -139,15 +140,15 @@ export function AnimalGame() {
               : "Du fandt alle dyrene!"}
           </p>
           <Stars count={animals.length} />
-          <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap", justifyContent: "center" }}>
+          <div style={{ display: "flex", gap: "clamp(8px, 2vw, 12px)", marginTop: "clamp(16px, 4vw, 24px)", flexWrap: "wrap", justifyContent: "center", width: "100%", maxWidth: "400px" }}>
             <button
               onClick={resetGame}
               style={{
                 background: "#FFE4A5",
                 border: "3px solid #FFD060",
                 borderRadius: "50px",
-                padding: "14px 28px",
-                fontSize: "17px",
+                padding: "clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 28px)",
+                fontSize: "clamp(14px, 3.8vw, 17px)",
                 fontWeight: "800",
                 color: "#6B5744",
                 cursor: "pointer",
@@ -165,8 +166,8 @@ export function AnimalGame() {
                 background: "white",
                 border: "2px solid #E8DDD0",
                 borderRadius: "50px",
-                padding: "14px 28px",
-                fontSize: "17px",
+                padding: "clamp(10px, 2.5vw, 14px) clamp(20px, 5vw, 28px)",
+                fontSize: "clamp(14px, 3.8vw, 17px)",
                 fontWeight: "800",
                 color: "#6B5744",
                 cursor: "pointer",
@@ -184,7 +185,7 @@ export function AnimalGame() {
           </div>
           <p
             style={{
-              marginTop: "32px",
+              marginTop: "clamp(16px, 4vw, 32px)",
               fontSize: "12px",
               color: "#C4B5A0",
               fontWeight: "600",

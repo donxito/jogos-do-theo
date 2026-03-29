@@ -11,10 +11,10 @@ export function HomeScreen() {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         background: "linear-gradient(170deg, #FFFBF0 0%, #FFF0E8 35%, #E8F4FF 70%, #F0FFF4 100%)",
         fontFamily: "'Nunito', sans-serif",
-        padding: "24px 16px 100px",
+        padding: "clamp(16px, 4vw, 24px) clamp(12px, 3vw, 16px) clamp(40px, 10vw, 100px)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -38,11 +38,11 @@ export function HomeScreen() {
       ))}
 
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "12px", position: "relative", zIndex: 1 }}>
+      <div style={{ textAlign: "center", marginBottom: "clamp(8px, 2vw, 12px)", position: "relative", zIndex: 1 }}>
         <div
           style={{
-            fontSize: "52px",
-            marginBottom: "4px",
+            fontSize: "clamp(36px, 10vw, 52px)",
+            marginBottom: "clamp(2px, 0.5vw, 4px)",
             animation: "bounce 2s ease-in-out infinite",
           }}
         >
@@ -50,7 +50,7 @@ export function HomeScreen() {
         </div>
         <h1
           style={{
-            fontSize: "clamp(28px, 7vw, 42px)",
+            fontSize: "clamp(24px, 6.5vw, 42px)",
             fontWeight: "900",
             color: "#3D2C1E",
             margin: "0",
@@ -62,9 +62,9 @@ export function HomeScreen() {
         </h1>
         <p
           style={{
-            fontSize: "15px",
+            fontSize: "clamp(13px, 3.5vw, 15px)",
             color: "#9B8D7E",
-            margin: "6px 0 16px",
+            margin: "clamp(4px, 1vw, 6px) 0 clamp(10px, 3vw, 16px)",
             fontWeight: "700",
           }}
         >
@@ -78,9 +78,9 @@ export function HomeScreen() {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "16px",
+          gap: "clamp(10px, 3vw, 16px)",
           maxWidth: "400px",
-          margin: "28px auto 0",
+          margin: "clamp(16px, 5vw, 28px) auto 0",
           position: "relative",
           zIndex: 1,
         }}
@@ -93,12 +93,12 @@ export function HomeScreen() {
               href={game.route}
               style={{
                 background: game.bg,
-                borderRadius: "24px",
-                padding: "24px 20px",
+                borderRadius: "clamp(18px, 5vw, 24px)",
+                padding: "clamp(16px, 4vw, 24px) clamp(14px, 3.5vw, 20px)",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                gap: "18px",
+                gap: "clamp(12px, 3.5vw, 18px)",
                 boxShadow: "0 6px 24px rgba(0,0,0,0.08)",
                 transition: "all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 animation: `cardSlideIn 0.5s ${i * 0.12}s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
@@ -129,7 +129,7 @@ export function HomeScreen() {
               {/* Emoji */}
               <div
                 style={{
-                  fontSize: "52px",
+                  fontSize: "clamp(36px, 10vw, 52px)",
                   lineHeight: 1,
                   flexShrink: 0,
                   filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
@@ -142,18 +142,18 @@ export function HomeScreen() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div
                   style={{
-                    fontSize: "clamp(20px, 5vw, 26px)",
+                    fontSize: "clamp(18px, 4.5vw, 26px)",
                     fontWeight: "900",
                     color: game.color,
                     lineHeight: 1.1,
-                    marginBottom: "4px",
+                    marginBottom: "clamp(2px, 0.5vw, 4px)",
                   }}
                 >
                   {info.name}
                 </div>
                 <div
                   style={{
-                    fontSize: "14px",
+                    fontSize: "clamp(12px, 3.2vw, 14px)",
                     color: `${game.color}bb`,
                     fontWeight: "700",
                   }}
@@ -182,7 +182,7 @@ export function HomeScreen() {
       <div
         style={{
           maxWidth: "400px",
-          margin: "16px auto 0",
+          margin: "clamp(10px, 3vw, 16px) auto 0",
           textAlign: "center",
           position: "relative",
           zIndex: 1,

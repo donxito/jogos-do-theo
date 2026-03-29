@@ -3,7 +3,7 @@ function Stars({ count }: { count: number }) {
     <div
       style={{
         display: "flex",
-        gap: "4px",
+        gap: "clamp(2px, 0.8vw, 4px)",
         justifyContent: "center",
         flexWrap: "wrap",
       }}
@@ -12,7 +12,7 @@ function Stars({ count }: { count: number }) {
         <span
           key={i}
           style={{
-            fontSize: "20px",
+            fontSize: "clamp(16px, 4.5vw, 20px)",
             animation: `starPop 0.4s ${i * 0.08}s cubic-bezier(0.34, 1.56, 0.64, 1) both`,
           }}
         >

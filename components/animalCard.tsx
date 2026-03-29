@@ -45,7 +45,7 @@ function AnimalCard({
       onClick={handleTap}
       style={{
         background: animal.bg,
-        borderRadius: "28px",
+        borderRadius: "clamp(18px, 5vw, 28px)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -60,7 +60,8 @@ function AnimalCard({
           : `0 4px 15px ${animal.bg}66`,
         userSelect: "none",
         WebkitTapHighlightColor: "transparent",
-        padding: "20px 12px",
+        padding: "clamp(12px, 3.5vw, 20px) clamp(8px, 2vw, 12px)",
+        aspectRatio: "1",
       }}
     >
       {/* Decorative circles */}
@@ -96,8 +97,8 @@ function AnimalCard({
             right: "10px",
             background: "white",
             borderRadius: "20px",
-            padding: "4px 10px",
-            fontSize: "14px",
+            padding: "clamp(2px, 0.8vw, 4px) clamp(6px, 2vw, 10px)",
+            fontSize: "clamp(11px, 3vw, 14px)",
             fontWeight: "700",
             color: animal.color,
             boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
@@ -112,7 +113,7 @@ function AnimalCard({
       {/* Emoji */}
       <div
         style={{
-          fontSize: "clamp(48px, 12vw, 72px)",
+          fontSize: "clamp(36px, 9vw, 72px)",
           lineHeight: 1,
           transform: tapped ? "rotate(-8deg)" : "rotate(0deg)",
           transition: "transform 0.3s ease",
@@ -124,8 +125,8 @@ function AnimalCard({
       {/* Name */}
       <div
         style={{
-          marginTop: "8px",
-          fontSize: "clamp(16px, 4vw, 22px)",
+          marginTop: "clamp(4px, 1vw, 8px)",
+          fontSize: "clamp(13px, 3.5vw, 22px)",
           fontWeight: "800",
           color: animal.color,
           fontFamily: "'Nunito', sans-serif",

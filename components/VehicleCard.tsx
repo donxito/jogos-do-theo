@@ -42,7 +42,7 @@ export function VehicleCard({
       className={animClass}
       style={{
         background: `linear-gradient(135deg, ${vehicle.bg} 0%, ${vehicle.bg}dd 100%)`,
-        borderRadius: "24px",
+        borderRadius: "clamp(16px, 4.5vw, 24px)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -58,7 +58,7 @@ export function VehicleCard({
         aspectRatio: "1",
         userSelect: "none",
         WebkitTapHighlightColor: "transparent",
-        padding: "10px",
+        padding: "clamp(6px, 2vw, 10px)",
       }}
     >
       {/* Road decoration */}
@@ -77,7 +77,7 @@ export function VehicleCard({
       {showSound && (
         <div style={{
           position: "absolute", top: "5px", right: "8px", background: "white", borderRadius: "16px",
-          padding: "3px 10px", fontSize: "13px", fontWeight: "800", color: vehicle.color,
+          padding: "clamp(2px, 0.5vw, 3px) clamp(6px, 2vw, 10px)", fontSize: "clamp(10px, 2.8vw, 13px)", fontWeight: "800", color: vehicle.color,
           boxShadow: `0 2px 10px ${vehicle.accent}30`, animation: "popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
           fontFamily: "'Baloo 2', 'Nunito', sans-serif", zIndex: 2,
         }}>
@@ -86,7 +86,7 @@ export function VehicleCard({
       )}
 
       <div style={{
-        fontSize: "clamp(44px, 11vw, 66px)", lineHeight: 1,
+        fontSize: "clamp(32px, 8.5vw, 66px)", lineHeight: 1,
         transform: tapped ? "translateX(6px)" : "translateX(0)",
         transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)", zIndex: 1,
       }}>
@@ -105,7 +105,7 @@ export function VehicleCard({
       )}
 
       <div style={{
-        marginTop: "6px", fontSize: "clamp(14px, 3.5vw, 20px)", fontWeight: "800",
+        marginTop: "clamp(3px, 0.8vw, 6px)", fontSize: "clamp(11px, 3vw, 20px)", fontWeight: "800",
         color: vehicle.color, fontFamily: "'Baloo 2', 'Nunito', sans-serif",
         textAlign: "center", zIndex: 1, lineHeight: 1.2,
       }}>

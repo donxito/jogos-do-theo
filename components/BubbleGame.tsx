@@ -301,15 +301,15 @@ function PackPill({
         background: active ? "#FFE4A5" : unlocked ? "white" : "#E8E8E8",
         border: active ? "2px solid #FFD060" : "2px solid #E8DDD0",
         borderRadius: "50px",
-        padding: "6px 14px",
-        fontSize: "13px",
+        padding: "clamp(4px, 1vw, 6px) clamp(10px, 3vw, 14px)",
+        fontSize: "clamp(11px, 3vw, 13px)",
         fontWeight: "800",
         color: unlocked ? "#6B5744" : "#B0A898",
         cursor: unlocked ? "pointer" : "default",
         fontFamily: "'Nunito', sans-serif",
         display: "inline-flex",
         alignItems: "center",
-        gap: "6px",
+        gap: "clamp(4px, 1vw, 6px)",
         boxShadow: active
           ? "0 2px 10px rgba(255,208,96,0.4)"
           : "0 2px 6px rgba(0,0,0,0.04)",
@@ -356,7 +356,10 @@ export function BubbleGame() {
 
     const item = pack.items[Math.floor(Math.random() * pack.items.length)];
     const id = ++bubbleIdRef.current;
-    const size = 70 + Math.random() * 20;
+    // Responsive bubble size: smaller on narrow screens
+    const vw = typeof window !== "undefined" ? window.innerWidth : 390;
+    const baseSize = Math.min(vw * 0.18, 80);
+    const size = baseSize + Math.random() * (baseSize * 0.25);
 
     return {
       id,
@@ -459,26 +462,29 @@ export function BubbleGame() {
   return (
     <div
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
+        height: "100dvh",
         background:
           "linear-gradient(180deg, #E8F4FD 0%, #F0F4FF 40%, #FFF9F0 100%)",
         fontFamily: "'Nunito', sans-serif",
-        padding: "16px",
-        paddingTop: "60px",
+        padding: "clamp(8px, 2vw, 16px)",
+        paddingTop: "clamp(48px, 8vw, 60px)",
         overflow: "hidden",
         position: "relative",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <BackButton />
 
       {/* Header */}
-      <div style={{ textAlign: "center", marginBottom: "12px" }}>
+      <div style={{ textAlign: "center", marginBottom: "clamp(4px, 1.5vw, 12px)" }}>
         <h1
           style={{
-            fontSize: "clamp(24px, 6vw, 36px)",
+            fontSize: "clamp(20px, 5.5vw, 36px)",
             fontWeight: "900",
             color: "#4A3728",
-            margin: "0 0 4px 0",
+            margin: "0 0 2px 0",
             letterSpacing: "-0.5px",
           }}
         >
@@ -487,9 +493,9 @@ export function BubbleGame() {
 
         <p
           style={{
-            fontSize: "14px",
+            fontSize: "clamp(12px, 3.2vw, 14px)",
             color: "#8B7355",
-            margin: "0 0 10px 0",
+            margin: "0 0 clamp(4px, 1.5vw, 10px) 0",
             fontWeight: "600",
           }}
         >
@@ -503,9 +509,9 @@ export function BubbleGame() {
       <div
         style={{
           display: "flex",
-          gap: "8px",
+          gap: "clamp(4px, 1.5vw, 8px)",
           justifyContent: "center",
-          marginBottom: "12px",
+          marginBottom: "clamp(6px, 1.5vw, 12px)",
           flexWrap: "wrap",
         }}
       >
@@ -522,14 +528,14 @@ export function BubbleGame() {
       </div>
 
       {/* Progress */}
-      <div style={{ textAlign: "center", marginBottom: "8px" }}>
+      <div style={{ textAlign: "center", marginBottom: "clamp(4px, 1vw, 8px)" }}>
         <Stars count={poppedCount} />
         <p
           style={{
-            fontSize: "13px",
+            fontSize: "clamp(11px, 3vw, 13px)",
             color: "#8B7355",
             fontWeight: "700",
-            margin: "4px 0 0",
+            margin: "2px 0 0",
           }}
         >
           {poppedCount} / {roundTotal}
@@ -543,9 +549,10 @@ export function BubbleGame() {
           position: "relative",
           width: "100%",
           maxWidth: "420px",
-          height: "60vh",
+          flex: 1,
+          minHeight: 0,
           margin: "0 auto",
-          borderRadius: "24px",
+          borderRadius: "clamp(16px, 4vw, 24px)",
           background: "rgba(255,255,255,0.3)",
           border: "2px dashed rgba(200,190,175,0.3)",
           overflow: "hidden",
@@ -586,17 +593,19 @@ export function BubbleGame() {
         <div
           style={{
             position: "fixed",
-            bottom: "30px",
+            bottom: "clamp(16px, 4vw, 30px)",
             left: "50%",
             transform: "translateX(-50%)",
             background: "linear-gradient(135deg, #FFE4A5, #FFD060)",
             borderRadius: "20px",
-            padding: "14px 28px",
+            padding: "clamp(10px, 3vw, 14px) clamp(20px, 5vw, 28px)",
             boxShadow: "0 8px 30px rgba(255,208,96,0.5)",
             animation: "bubbleUnlockSlide 3s ease forwards",
             zIndex: 50,
             textAlign: "center",
             fontFamily: "'Nunito', sans-serif",
+            width: "max-content",
+            maxWidth: "calc(100vw - 32px)",
           }}
         >
           <div style={{ fontSize: "24px", marginBottom: "4px" }}>🔓✨</div>
@@ -639,11 +648,12 @@ export function BubbleGame() {
             justifyContent: "center",
             zIndex: 100,
             animation: "popIn 0.4s ease",
+            padding: "clamp(16px, 4vw, 32px)",
           }}
         >
           <div
             style={{
-              fontSize: "80px",
+              fontSize: "clamp(48px, 12vw, 80px)",
               animation: "bounce 0.8s ease infinite",
             }}
           >
@@ -651,10 +661,10 @@ export function BubbleGame() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(28px, 7vw, 42px)",
+              fontSize: "clamp(24px, 6vw, 42px)",
               fontWeight: "900",
               color: "#4A3728",
-              margin: "16px 0 8px",
+              margin: "clamp(8px, 2vw, 16px) 0 clamp(4px, 1vw, 8px)",
               textAlign: "center",
             }}
           >
@@ -662,10 +672,10 @@ export function BubbleGame() {
           </h2>
           <p
             style={{
-              fontSize: "18px",
+              fontSize: "clamp(14px, 4vw, 18px)",
               color: "#8B7355",
               fontWeight: "700",
-              margin: "0 0 8px",
+              margin: "0 0 clamp(4px, 1vw, 8px)",
             }}
           >
             {lang === "pt"
@@ -674,15 +684,23 @@ export function BubbleGame() {
           </p>
           <Stars count={roundTotal} />
 
-          <div style={{ display: "flex", gap: "12px", marginTop: "24px", flexWrap: "wrap", justifyContent: "center" }}>
+          <div style={{
+            display: "flex",
+            gap: "clamp(8px, 2vw, 12px)",
+            marginTop: "clamp(16px, 4vw, 24px)",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            width: "100%",
+            maxWidth: "400px",
+          }}>
             <button
               onClick={resetRound}
               style={{
                 background: "#FFE4A5",
                 border: "3px solid #FFD060",
                 borderRadius: "50px",
-                padding: "14px 36px",
-                fontSize: "18px",
+                padding: "clamp(10px, 2.5vw, 14px) clamp(24px, 6vw, 36px)",
+                fontSize: "clamp(15px, 4vw, 18px)",
                 fontWeight: "800",
                 color: "#6B5744",
                 cursor: "pointer",
@@ -704,8 +722,8 @@ export function BubbleGame() {
                 background: "white",
                 border: "3px solid #E8DDD0",
                 borderRadius: "50px",
-                padding: "14px 36px",
-                fontSize: "18px",
+                padding: "clamp(10px, 2.5vw, 14px) clamp(24px, 6vw, 36px)",
+                fontSize: "clamp(15px, 4vw, 18px)",
                 fontWeight: "800",
                 color: "#6B5744",
                 cursor: "pointer",
@@ -723,7 +741,7 @@ export function BubbleGame() {
 
           <p
             style={{
-              marginTop: "32px",
+              marginTop: "clamp(16px, 4vw, 32px)",
               fontSize: "12px",
               color: "#C4B5A0",
               fontWeight: "600",
