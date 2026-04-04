@@ -3,7 +3,6 @@
 import { useState, useCallback } from "react";
 import { useLang } from "@/lib/LangContext";
 import { BackButton } from "@/components/layout/BackButton";
-import { LangToggle } from "@/components/layout/LangToggle";
 import { PaintCanvas } from "@/components/games/paint/PaintCanvas";
 import { GalleryView } from "@/components/games/paint/GalleryView";
 import {
@@ -102,21 +101,15 @@ export function PaintGame() {
 
       <BackButton />
 
-      {/* Header */}
-      <div style={{ padding: "10px 16px 6px", textAlign: "center", flexShrink: 0, paddingTop: "clamp(48px, 8vw, 60px)" }}>
-        <h1 style={{ fontSize: "clamp(18px, 5vw, 26px)", fontWeight: "900", color: "#3D2C1E", margin: "0 0 2px 0" }}>
+      {/* Compact header */}
+      <div style={{ padding: "4px 16px 2px", textAlign: "center", flexShrink: 0, paddingTop: "clamp(40px, 7vw, 50px)" }}>
+        <h1 style={{ fontSize: "clamp(16px, 4.5vw, 22px)", fontWeight: "900", color: "#3D2C1E", margin: 0 }}>
           {lang === "pt" ? "🎨 Pinta, Theo!" : "🎨 Mal, Theo!"}
         </h1>
-        <p style={{ fontSize: "12px", color: "#9B8D7E", margin: "2px 0 clamp(6px, 2vw, 12px)", fontWeight: "700" }}>
-          {toolMode === "stamp"
-            ? lang === "pt" ? "Toca para colar stickers!" : "Tryk for at sætte klistermærker!"
-            : lang === "pt" ? "Usa o dedo para pintar!" : "Brug fingeren til at male!"}
-        </p>
-        <LangToggle />
       </div>
 
       {/* Canvas */}
-      <div style={{ flex: 1, padding: "6px 12px", minHeight: 0 }}>
+      <div style={{ flex: 1, padding: "4px 8px", minHeight: 0 }}>
         <PaintCanvas
           color={COLORS[selectedColor].hex}
           brushSize={BRUSH_SIZES[brushSizeIdx].size}
@@ -128,100 +121,94 @@ export function PaintGame() {
         />
       </div>
 
-      {/* Bottom toolbar */}
+      {/* Bottom toolbar — compact */}
       <div style={{
-        padding: "8px 12px", paddingBottom: "max(8px, env(safe-area-inset-bottom))",
+        padding: "6px 8px", paddingBottom: "max(6px, env(safe-area-inset-bottom))",
         background: "rgba(255,255,255,0.92)", backdropFilter: "blur(12px)",
         borderTop: "2px solid #F0E8DD", flexShrink: 0,
       }}>
 
         {/* Mode toggle: Brush / Stickers */}
-        <div style={{ display: "flex", gap: "4px", justifyContent: "center", marginBottom: "8px" }}>
+        <div style={{ display: "flex", gap: "4px", justifyContent: "center", marginBottom: "6px" }}>
           <button onClick={() => { setToolMode("brush"); setIsEraser(false); }} style={{
-            flex: 1, maxWidth: "140px", padding: "6px 0", borderRadius: "12px",
+            flex: 1, maxWidth: "120px", padding: "4px 0", borderRadius: "10px",
             border: "2px solid " + (toolMode === "brush" ? "#3D2C1E" : "#E0D8D0"),
             background: toolMode === "brush" ? "#3D2C1E" : "#FFF",
             color: toolMode === "brush" ? "#FFF" : "#6B5744",
-            fontSize: "13px", fontWeight: "800", cursor: "pointer",
+            fontSize: "12px", fontWeight: "800", cursor: "pointer",
             fontFamily: "'Nunito', sans-serif", transition: "all 0.15s",
             WebkitTapHighlightColor: "transparent",
           }}>
             🖌️ {lang === "pt" ? "Pintar" : "Male"}
           </button>
           <button onClick={() => { setToolMode("stamp"); setIsEraser(false); }} style={{
-            flex: 1, maxWidth: "140px", padding: "6px 0", borderRadius: "12px",
+            flex: 1, maxWidth: "120px", padding: "4px 0", borderRadius: "10px",
             border: "2px solid " + (toolMode === "stamp" ? "#6C5CE7" : "#E0D8D0"),
             background: toolMode === "stamp" ? "#6C5CE7" : "#FFF",
             color: toolMode === "stamp" ? "#FFF" : "#6B5744",
-            fontSize: "13px", fontWeight: "800", cursor: "pointer",
+            fontSize: "12px", fontWeight: "800", cursor: "pointer",
             fontFamily: "'Nunito', sans-serif", transition: "all 0.15s",
             WebkitTapHighlightColor: "transparent",
           }}>
-            ⭐ {lang === "pt" ? "Stickers" : "Klistermærker"}
+            ⭐ Stickers
           </button>
         </div>
 
         {/* BRUSH MODE TOOLBAR */}
         {toolMode === "brush" && (
           <>
-            <div style={{ display: "flex", gap: "6px", justifyContent: "center", flexWrap: "wrap", marginBottom: "8px" }}>
+            {/* Colors + eraser + gallery in one row */}
+            <div style={{ display: "flex", gap: "5px", justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginBottom: "5px" }}>
               {COLORS.map((c, i) => (
                 <button key={c.hex} onClick={() => handleColorSelect(i)} style={{
-                  width: "36px", height: "36px", borderRadius: "50%",
+                  width: "28px", height: "28px", borderRadius: "50%",
                   border: selectedColor === i && !isEraser ? "3px solid #3D2C1E" : c.hex === "#FFFFFF" ? "2px solid #DDD" : "2px solid transparent",
                   background: c.hex, cursor: "pointer", transition: "all 0.15s",
                   transform: selectedColor === i && !isEraser ? "scale(1.15)" : "scale(1)",
-                  boxShadow: selectedColor === i && !isEraser ? `0 0 0 3px ${c.hex}40, 0 2px 8px rgba(0,0,0,0.15)` : "0 1px 4px rgba(0,0,0,0.1)",
+                  boxShadow: selectedColor === i && !isEraser ? `0 0 0 2px ${c.hex}40` : "0 1px 3px rgba(0,0,0,0.1)",
                   WebkitTapHighlightColor: "transparent", padding: 0,
-                }} title={lang === "pt" ? c.pt : c.da} />
+                }} />
               ))}
             </div>
-            <div style={{ display: "flex", gap: "8px", justifyContent: "center", alignItems: "center" }}>
+            {/* Brush sizes + eraser + gallery */}
+            <div style={{ display: "flex", gap: "6px", justifyContent: "center", alignItems: "center" }}>
               {BRUSH_SIZES.map((b, i) => (
                 <button key={i} onClick={() => { setBrushSizeIdx(i); setIsEraser(false); }} style={{
-                  width: "38px", height: "38px", borderRadius: "12px",
+                  width: "32px", height: "32px", borderRadius: "10px",
                   border: brushSizeIdx === i && !isEraser ? "2px solid #3D2C1E" : "2px solid #E0D8D0",
                   background: brushSizeIdx === i && !isEraser ? "#F5F0E8" : "#FFF",
                   cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
                   transition: "all 0.15s", WebkitTapHighlightColor: "transparent", padding: 0,
                 }}>
                   <div style={{
-                    width: b.size + "px", height: b.size + "px", borderRadius: "50%",
+                    width: Math.min(b.size, 20) + "px", height: Math.min(b.size, 20) + "px", borderRadius: "50%",
                     background: isEraser ? "#CCC" : COLORS[selectedColor].hex,
                     border: COLORS[selectedColor].hex === "#FFFFFF" && !isEraser ? "1px solid #DDD" : "none",
-                    transition: "background 0.15s",
                   }} />
                 </button>
               ))}
-              <div style={{ width: "1px", height: "28px", background: "#E0D8D0" }} />
+              <div style={{ width: "1px", height: "22px", background: "#E0D8D0" }} />
               <button onClick={handleEraserToggle} style={{
-                width: "38px", height: "38px", borderRadius: "12px",
+                width: "32px", height: "32px", borderRadius: "10px",
                 border: isEraser ? "2px solid #3D2C1E" : "2px solid #E0D8D0",
                 background: isEraser ? "#F5F0E8" : "#FFF",
                 cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "18px", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", padding: 0,
+                fontSize: "16px", transition: "all 0.15s", WebkitTapHighlightColor: "transparent", padding: 0,
               }}>🧹</button>
-              <div style={{ width: "1px", height: "28px", background: "#E0D8D0" }} />
+              <div style={{ width: "1px", height: "22px", background: "#E0D8D0" }} />
               <button onClick={() => setShowGallery(true)} style={{
-                height: "38px", borderRadius: "12px", border: "2px solid #E0D8D0",
+                height: "32px", borderRadius: "10px", border: "2px solid #E0D8D0",
                 background: "#FFF", cursor: "pointer", display: "flex", alignItems: "center",
-                justifyContent: "center", gap: "4px", fontSize: "15px", fontWeight: "800",
-                color: "#6B5744", fontFamily: "'Nunito', sans-serif", padding: "0 12px",
+                justifyContent: "center", gap: "3px", fontSize: "14px", fontWeight: "800",
+                color: "#6B5744", fontFamily: "'Nunito', sans-serif", padding: "0 8px",
                 transition: "all 0.15s", WebkitTapHighlightColor: "transparent",
               }}>
                 🖼️
                 {paintingCount > 0 && <span style={{
-                  fontSize: "11px", background: "#6C5CE7", color: "#FFF", borderRadius: "10px",
-                  padding: "1px 6px", fontWeight: "800", minWidth: "18px", textAlign: "center",
+                  fontSize: "10px", background: "#6C5CE7", color: "#FFF", borderRadius: "8px",
+                  padding: "1px 5px", fontWeight: "800",
                 }}>{paintingCount}</span>}
               </button>
-            </div>
-            <div style={{ textAlign: "center", marginTop: "6px", fontSize: "12px", fontWeight: "700", color: "#9B8D7E" }}>
-              {isEraser
-                ? lang === "pt" ? "🧹 Borracha" : "🧹 Viskelæder"
-                : `${COLORS[selectedColor].emoji} ${lang === "pt" ? COLORS[selectedColor].pt : COLORS[selectedColor].da}`}
-              {" · "}
-              {lang === "pt" ? BRUSH_SIZES[brushSizeIdx].name.pt : BRUSH_SIZES[brushSizeIdx].name.da}
             </div>
           </>
         )}
@@ -229,75 +216,62 @@ export function PaintGame() {
         {/* STICKER MODE TOOLBAR */}
         {toolMode === "stamp" && (
           <>
-            {/* Category tabs */}
-            <div style={{
-              display: "flex", gap: "4px", justifyContent: "center", marginBottom: "8px",
-              overflowX: "auto", WebkitOverflowScrolling: "touch", paddingBottom: "2px",
-            }}>
+            {/* Category tabs — emoji only */}
+            <div style={{ display: "flex", gap: "4px", justifyContent: "center", marginBottom: "5px" }}>
               {STICKER_CATEGORIES.map((cat, i) => (
                 <button key={cat.id} onClick={() => setStickerCategoryIdx(i)} style={{
-                  padding: "4px 10px", borderRadius: "10px", border: "none",
+                  width: "34px", height: "30px", borderRadius: "8px", border: "none",
                   background: stickerCategoryIdx === i ? "#6C5CE7" : "rgba(0,0,0,0.04)",
-                  color: stickerCategoryIdx === i ? "#FFF" : "#6B5744",
-                  fontSize: "12px", fontWeight: "800", cursor: "pointer",
-                  fontFamily: "'Nunito', sans-serif", whiteSpace: "nowrap",
-                  transition: "all 0.15s", WebkitTapHighlightColor: "transparent",
-                  display: "flex", alignItems: "center", gap: "4px",
+                  fontSize: "16px", cursor: "pointer", display: "flex", alignItems: "center",
+                  justifyContent: "center", transition: "all 0.15s",
+                  WebkitTapHighlightColor: "transparent",
                 }}>
-                  <span style={{ fontSize: "14px" }}>{cat.emoji}</span>
-                  {lang === "pt" ? cat.pt : cat.da}
+                  {cat.emoji}
                 </button>
               ))}
             </div>
-            {/* Sticker grid */}
+            {/* Sticker grid — compact */}
             <div style={{
-              display: "flex", gap: "4px", justifyContent: "center", flexWrap: "wrap", marginBottom: "8px",
-              maxHeight: "80px", overflowY: "auto", WebkitOverflowScrolling: "touch",
+              display: "flex", gap: "3px", justifyContent: "center", flexWrap: "wrap", marginBottom: "5px",
+              maxHeight: "68px", overflowY: "auto", WebkitOverflowScrolling: "touch",
             }}>
               {currentCategory.stickers.map((sticker) => (
                 <button key={sticker} onClick={() => handleStickerSelect(sticker)} style={{
-                  width: "40px", height: "40px", borderRadius: "12px",
+                  width: "34px", height: "34px", borderRadius: "10px",
                   border: selectedSticker === sticker ? "2px solid #6C5CE7" : "2px solid transparent",
                   background: selectedSticker === sticker ? "#F0EDFF" : "rgba(0,0,0,0.02)",
                   cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "22px", transition: "all 0.15s",
-                  transform: selectedSticker === sticker ? "scale(1.1)" : "scale(1)",
+                  fontSize: "18px", transition: "all 0.15s",
                   WebkitTapHighlightColor: "transparent", padding: 0,
-                  animation: selectedSticker === sticker ? "stickerBounce 0.3s ease" : "none",
                 }}>{sticker}</button>
               ))}
             </div>
             {/* Sticker size + gallery */}
-            <div style={{ display: "flex", gap: "8px", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "6px", justifyContent: "center", alignItems: "center" }}>
               {STICKER_SIZES.map((s, i) => (
                 <button key={i} onClick={() => setStickerSizeIdx(i)} style={{
-                  width: "38px", height: "38px", borderRadius: "12px",
+                  width: "32px", height: "32px", borderRadius: "10px",
                   border: stickerSizeIdx === i ? "2px solid #6C5CE7" : "2px solid #E0D8D0",
                   background: stickerSizeIdx === i ? "#F0EDFF" : "#FFF",
                   cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: s.size * 0.45 + "px", transition: "all 0.15s",
+                  fontSize: Math.max(12, s.size * 0.35) + "px", transition: "all 0.15s",
                   WebkitTapHighlightColor: "transparent", padding: 0,
                 }}>{selectedSticker}</button>
               ))}
-              <div style={{ width: "1px", height: "28px", background: "#E0D8D0" }} />
+              <div style={{ width: "1px", height: "22px", background: "#E0D8D0" }} />
               <button onClick={() => setShowGallery(true)} style={{
-                height: "38px", borderRadius: "12px", border: "2px solid #E0D8D0",
+                height: "32px", borderRadius: "10px", border: "2px solid #E0D8D0",
                 background: "#FFF", cursor: "pointer", display: "flex", alignItems: "center",
-                justifyContent: "center", gap: "4px", fontSize: "15px", fontWeight: "800",
-                color: "#6B5744", fontFamily: "'Nunito', sans-serif", padding: "0 12px",
+                justifyContent: "center", gap: "3px", fontSize: "14px", fontWeight: "800",
+                color: "#6B5744", fontFamily: "'Nunito', sans-serif", padding: "0 8px",
                 transition: "all 0.15s", WebkitTapHighlightColor: "transparent",
               }}>
                 🖼️
                 {paintingCount > 0 && <span style={{
-                  fontSize: "11px", background: "#6C5CE7", color: "#FFF", borderRadius: "10px",
-                  padding: "1px 6px", fontWeight: "800", minWidth: "18px", textAlign: "center",
+                  fontSize: "10px", background: "#6C5CE7", color: "#FFF", borderRadius: "8px",
+                  padding: "1px 5px", fontWeight: "800",
                 }}>{paintingCount}</span>}
               </button>
-            </div>
-            <div style={{ textAlign: "center", marginTop: "6px", fontSize: "12px", fontWeight: "700", color: "#9B8D7E" }}>
-              {selectedSticker} {lang === "pt" ? "Sticker" : "Klistermærke"}
-              {" · "}
-              {lang === "pt" ? STICKER_SIZES[stickerSizeIdx].name.pt : STICKER_SIZES[stickerSizeIdx].name.da}
             </div>
           </>
         )}
