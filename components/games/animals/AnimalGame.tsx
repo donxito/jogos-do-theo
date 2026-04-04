@@ -4,10 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { animals, type Animal } from "@/lib/animals";
 import { useLang } from "@/lib/LangContext";
-import AnimalCard from "./animalCard";
-import Stars from "./stars";
-import { BackButton } from "./BackButton";
-import { LangToggle } from "./LangToggle";
+import AnimalCard from "@/components/games/animals/AnimalCard";
+import Stars from "@/components/ui/Stars";
+import { BackButton } from "@/components/layout/BackButton";
+import { LangToggle } from "@/components/layout/LangToggle";
 
 export function AnimalGame() {
   const { lang } = useLang();

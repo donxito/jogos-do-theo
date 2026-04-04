@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useLang } from "@/lib/LangContext";
-import Stars from "./stars";
-import { BackButton } from "./BackButton";
-import { LangToggle } from "./LangToggle";
+import Stars from "@/components/ui/Stars";
+import { BackButton } from "@/components/layout/BackButton";
+import { LangToggle } from "@/components/layout/LangToggle";
 import Link from "next/link";
 
 // ── Content packs: animals first, numbers & letters unlock ──────────────

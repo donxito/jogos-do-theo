@@ -4,11 +4,11 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { vehicles, type Vehicle } from "@/lib/vehicles";
 import { useLang } from "@/lib/LangContext";
-import { BackButton } from "./BackButton";
-import { LangToggle } from "./LangToggle";
-import { TrafficLights } from "./TrafficLights";
-import { VehicleCard } from "./VehicleCard";
-import { VehicleConfetti } from "./VehicleConfetti";
+import { BackButton } from "@/components/layout/BackButton";
+import { LangToggle } from "@/components/layout/LangToggle";
+import { TrafficLights } from "@/components/ui/TrafficLights";
+import { VehicleCard } from "@/components/games/vehicles/VehicleCard";
+import { VehicleConfetti } from "@/components/games/vehicles/VehicleConfetti";
 
 export function VehicleGame() {
   const { lang } = useLang();

@@ -36,4 +36,13 @@ export const GAMES: GameEntry[] = [
     bg: "linear-gradient(135deg, #FFF6A5, #C7CEEA)",
     color: "#8B7500",
   },
+  {
+  id: "paint",
+  route: "/paint",
+  emoji: "🎨",
+  pt: { name: "Pinta", desc: "Pinta com os dedos!" },
+  da: { name: "Mal", desc: "Mal med fingrene!" },
+  bg: "linear-gradient(135deg, #FDCB6E, #E17055, #6C5CE7)",
+  color: "#6C3483",
+},
 ];

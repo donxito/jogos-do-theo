@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { type Vehicle } from "@/lib/vehicles";
-import { playVehicleSound } from "./playVehicleSound";
+import { playVehicleSound } from "@/components/games/vehicles/playVehicleSound";
 
 export function VehicleCard({
   vehicle,

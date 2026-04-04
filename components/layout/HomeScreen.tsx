@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { GAMES } from "@/lib/gameRegistry";
 import { useLang } from "@/lib/LangContext";
-import { LangToggle } from "./LangToggle";
+import { LangToggle } from "@/components/layout/LangToggle";
 
 export function HomeScreen() {
   const { lang } = useLang();
