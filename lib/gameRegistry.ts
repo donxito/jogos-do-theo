@@ -45,4 +45,13 @@ export const GAMES: GameEntry[] = [
   bg: "linear-gradient(135deg, #FDCB6E, #E17055, #6C5CE7)",
   color: "#6C3483",
 },
+  {
+    id: "memory",
+    route: "/memory",
+    emoji: "🧠",
+    pt: { name: "Memória", desc: "Encontra os pares de animais!" },
+    da: { name: "Hukommelse", desc: "Find dyrenes par!" },
+    bg: "linear-gradient(135deg, #C7B8E8, #A8D8E0, #FFD3B6)",
+    color: "#5B3A8B",
+  },
 ];
